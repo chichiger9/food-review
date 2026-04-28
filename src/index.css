@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Outfit Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+
+  --color-brand-50: oklch(0.97 0.02 165);
+  --color-brand-100: oklch(0.93 0.04 165);
+  --color-brand-200: oklch(0.86 0.07 165);
+  --color-brand-500: oklch(0.55 0.11 165);
+  --color-brand-600: oklch(0.48 0.12 165);
+  --color-brand-700: oklch(0.42 0.11 165);
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+    color-scheme: light dark;
+  }
+
+  body {
+    @apply font-sans bg-zinc-50 text-zinc-600;
+  }
+
+  .dark body {
+    @apply bg-zinc-950 text-zinc-400;
+  }
+}
