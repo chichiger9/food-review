@@ -50,6 +50,7 @@ export type Review = {
   title: string
   restaurant: string
   date: string
+  cuisine: string
   excerpt: string
   /** Markdown with image paths rewritten to Vite asset URLs */
   bodyMarkdown: string
@@ -150,6 +151,7 @@ type Frontmatter = {
   title: string
   restaurant: string
   date: string
+  cuisine: string
   excerpt: string
 }
 
@@ -158,14 +160,23 @@ function readFrontmatter(data: unknown, fileKey: string): Frontmatter {
     throw new Error(`${fileKey}: invalid or missing frontmatter`)
   }
   const d = data as Record<string, unknown>
-  for (const key of ['title', 'restaurant', 'date', 'excerpt'] as const) {
+  for (const key of [
+    'title',
+    'restaurant',
+    'date',
+    'cuisine',
+    'excerpt',
+  ] as const) {
     if (typeof d[key] !== 'string' || !(d[key] as string).trim()) {
       throw new Error(
         `${fileKey}: frontmatter must include a non-empty string "${key}"`,
       )
     }
   }
-  return d as Frontmatter
+  return {
+    ...(d as Frontmatter),
+    cuisine: (d.cuisine as string).trim().toLowerCase(),
+  }
 }
 
 function slugFromMdKey(fileKey: string): string {
@@ -199,6 +210,7 @@ function buildReviews(): Review[] {
       title: fm.title,
       restaurant: fm.restaurant,
       date: fm.date,
+      cuisine: fm.cuisine,
       excerpt: fm.excerpt,
       bodyMarkdown,
       coverImage: coverForReview(slug, firstResolved),

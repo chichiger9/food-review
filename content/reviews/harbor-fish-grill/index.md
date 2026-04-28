@@ -2,6 +2,7 @@
 title: "Harbor Fish Grill: simple seafood, done right"
 restaurant: Harbor Fish Grill
 date: 2026-04-22
+cuisine: seafood
 excerpt: Grilled catch of the day, minimal fuss, and a view that earns the window seats.
 ---
 

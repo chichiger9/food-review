@@ -2,6 +2,7 @@
 title: Late-night comfort at Midnight Noodle Bar
 restaurant: Midnight Noodle Bar
 date: 2026-04-15
+cuisine: chinese
 excerpt: Hand-pulled noodles and a rich broth that hits the spot when everything else is closed.
 ---
 

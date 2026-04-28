@@ -51,6 +51,9 @@ export default function ReviewCard({ review, index }: ReviewCardProps) {
           <span className="font-medium text-zinc-700 dark:text-zinc-300">
             {review.restaurant}
           </span>
+          <span className="rounded-full border border-zinc-300/80 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-zinc-600 dark:border-zinc-700 dark:text-zinc-300">
+            {review.cuisine}
+          </span>
           <time dateTime={review.date}>
             {new Date(review.date + 'T12:00:00').toLocaleDateString(undefined, {
               year: 'numeric',
