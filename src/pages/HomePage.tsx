@@ -1,5 +1,6 @@
 import { ArrowRight } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
+import homeHero from '../assets/home-hero.png'
 import MagneticPrimaryLink from '../components/MagneticPrimaryLink'
 
 const spring = { type: 'spring' as const, stiffness: 100, damping: 20 }
@@ -63,14 +64,14 @@ export default function HomePage() {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={spring}
-          className="order-1 relative aspect-[4/5] w-full overflow-hidden rounded-[2.5rem] border border-zinc-200/80 bg-zinc-100 shadow-[0_24px_60px_-20px_rgba(24,24,27,0.2)] dark:border-zinc-800 dark:bg-zinc-900 dark:shadow-[0_24px_60px_-20px_rgba(0,0,0,0.45)] md:order-2"
+          className="order-1 relative mx-auto aspect-[4/5] w-full max-w-[min(100%,clamp(272px,75vw,400px))] overflow-hidden rounded-[2.5rem] border border-zinc-200/80 bg-zinc-100 shadow-[0_24px_60px_-20px_rgba(24,24,27,0.2)] dark:border-zinc-800 dark:bg-zinc-900 dark:shadow-[0_24px_60px_-20px_rgba(0,0,0,0.45)] md:order-2"
         >
           <img
-            src="https://picsum.photos/seed/tablenotes-hero/900/1100"
-            width={900}
-            height={1100}
-            alt=""
-            className="h-full w-full object-cover"
+            src={homeHero}
+            width={736}
+            height={900}
+            alt="Soufflé pancakes with sauce and cream on a wooden table"
+            className="h-full w-full object-cover object-center"
             decoding="async"
           />
           <div

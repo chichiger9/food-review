@@ -4,9 +4,26 @@ import { Link, useParams } from 'react-router-dom'
 import remarkGfm from 'remark-gfm'
 import { getReviewBySlug } from '../data/reviews'
 
+function escapeRegExp(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
 /** Drop the first inline image so the hero is not repeated in the article. */
 function stripFirstLeadingImage(md: string): string {
   return md.replace(/^\s*!\[[^\]]*\]\([^)]+\)\s*\n?/m, '')
+}
+
+/**
+ * Remove any remaining `![alt](url)` whose url matches the hero/cover (e.g. same
+ * file referenced again so it is not shown twice on the page).
+ */
+function stripMarkdownImagesWithUrl(md: string, url: string): string {
+  if (!url.trim()) return md
+  const re = new RegExp(
+    `!\\[[^\\]]*\\]\\(\\s*${escapeRegExp(url)}\\s*\\)`,
+    'g',
+  )
+  return md.replace(re, '').replace(/\n{3,}/g, '\n\n')
 }
 
 export default function ReviewDetailPage() {
@@ -33,7 +50,10 @@ export default function ReviewDetailPage() {
     )
   }
 
-  const articleMarkdown = stripFirstLeadingImage(review.bodyMarkdown)
+  const articleMarkdown = stripMarkdownImagesWithUrl(
+    stripFirstLeadingImage(review.bodyMarkdown),
+    review.coverImage,
+  )
 
   return (
     <article className="pb-8">

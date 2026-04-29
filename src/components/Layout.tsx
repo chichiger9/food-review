@@ -11,12 +11,12 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className="flex min-h-[100dvh] flex-col">
-      <header className="sticky top-0 z-20 border-b border-zinc-200/80 bg-zinc-50/75 shadow-[inset_0_-1px_0_rgba(255,255,255,0.55)] backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/75 dark:shadow-[inset_0_-1px_0_rgba(255,255,255,0.06)]">
-        <div className="border-b border-white/10 dark:border-white/5">
+      <header className="sticky top-0 z-20 border-b border-sky-200/85 bg-sky-50/90 shadow-[inset_0_-1px_0_rgba(255,255,255,0.65)] backdrop-blur-md dark:border-sky-900/50 dark:bg-sky-950/80 dark:shadow-[inset_0_-1px_0_rgba(255,255,255,0.05)]">
+        <div className="border-b border-sky-100/70 dark:border-sky-900/40">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
             <Link
               to="/"
-              className="font-sans text-lg font-semibold tracking-tight text-zinc-900 transition-colors hover:text-brand-600 dark:text-zinc-100 dark:hover:text-brand-500"
+              className="font-sans text-lg font-semibold tracking-tight text-sky-950 transition-colors hover:text-brand-600 dark:text-sky-100 dark:hover:text-brand-400"
             >
               Table notes
             </Link>
@@ -28,8 +28,8 @@ export default function Layout({ children }: LayoutProps) {
                 to="/reviews"
                 className={`inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition-colors ${
                   onReviews
-                    ? 'bg-zinc-200/80 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100'
-                    : 'text-zinc-600 hover:bg-zinc-200/50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/80 dark:hover:text-zinc-100'
+                    ? 'bg-sky-200/90 text-sky-950 dark:bg-sky-900/85 dark:text-sky-100'
+                    : 'text-sky-950/85 hover:bg-sky-200/65 hover:text-sky-950 dark:text-sky-200/85 dark:hover:bg-sky-900/65 dark:hover:text-sky-50'
                 }`}
               >
                 <Newspaper

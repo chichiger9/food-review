@@ -51,6 +51,7 @@ export type Review = {
   restaurant: string
   date: string
   cuisine: string
+  location: string
   excerpt: string
   /** Markdown with image paths rewritten to Vite asset URLs */
   bodyMarkdown: string
@@ -142,6 +143,7 @@ function rewriteImagePaths(
   return { markdown, firstResolvedUrl }
 }
 
+/** Hero and list card image: the first `![...](...)` in the review body after frontmatter. */
 function coverForReview(slug: string, firstImageUrl: string | undefined): string {
   if (firstImageUrl) return firstImageUrl
   return `https://picsum.photos/seed/${encodeURIComponent(slug)}/1200/720`
@@ -152,6 +154,7 @@ type Frontmatter = {
   restaurant: string
   date: string
   cuisine: string
+  location: string
   excerpt: string
 }
 
@@ -165,6 +168,7 @@ function readFrontmatter(data: unknown, fileKey: string): Frontmatter {
     'restaurant',
     'date',
     'cuisine',
+    'location',
     'excerpt',
   ] as const) {
     if (typeof d[key] !== 'string' || !(d[key] as string).trim()) {
@@ -176,6 +180,7 @@ function readFrontmatter(data: unknown, fileKey: string): Frontmatter {
   return {
     ...(d as Frontmatter),
     cuisine: (d.cuisine as string).trim().toLowerCase(),
+    location: (d.location as string).trim(),
   }
 }
 
@@ -211,6 +216,7 @@ function buildReviews(): Review[] {
       restaurant: fm.restaurant,
       date: fm.date,
       cuisine: fm.cuisine,
+      location: fm.location,
       excerpt: fm.excerpt,
       bodyMarkdown,
       coverImage: coverForReview(slug, firstResolved),
