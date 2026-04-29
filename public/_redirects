@@ -1,0 +1,2 @@
+# SPA fallback: client-side routes (e.g. /reviews) must serve index.html
+/*    /index.html   200
